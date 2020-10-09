@@ -6,9 +6,35 @@
     <body>
 
       <style>
+      .collapsible {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%
+        border: none;
+        text-align: left;
+        outline: none;
+
+      }
+
+      .content {
+        padding: 0 18px;
+        display: none;
+        overflow: hidden;
+        background-color: #f1f1f1;
+      }
+
         h1 {
-          font-size: 75px;
+          font-size: 70px;
           font-family: cursive;
+        }
+
+        .head {
+          color: blue;
+          font-weight: bold;
+          font-family: serif;
+          font-size: 22px;
         }
 
         button {
@@ -17,141 +43,144 @@
 
         }
 
+        table th, td {
+          paddding: 10px;
+          text-alight: left;
+          border-bottom: 1 px solid;
+        }
+
+        td {
+          height: 50px;
+          vertical-align: top;
+        }
+
         body {
           padding: 25px;
-          background-color: white;
+          background-color: teal;
           color: black;
           font-size: 25px;
-        }
+              }
 
         .dark-mode {
           background-color: black;
-          color: white;
+          color: black;
+              }
+
+        #rcorners {
+          border-radius: 25px;
+          background: white;
+          box-shadow: 5px 10px #888888;
+          dark-mode color: ba
+          paddding: 20px;
+          width: 1100px;
+          height: 600px;
         }
 
+
       </style>
+      <button onclick = "myFunction()">Switch to Dark Mode</button>
+
 
         <body>
-          <button onclick = "myFunction()">Switch to Dark Mode</button>
+          <a href= "https://facebook.com/sharer.php?u=https://web.facebook.com/muflihat1"><image src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASgAAACqCAMAAAAp1iJMAAAAaVBMVEX///9CZ7I6YbCcq9GntNbw8vfh5fBEaLFAZbHFzeQzXa7CyN75+vw3YK89ZLGJmshLbLS4wdtVc7aksNIrWayyu9jQ1ufm6PByiL+To8ysudlthL3z9PiDlcXf4+5gfLp7j8OOn8tfernpAlGrAAACjElEQVR4nO3da4+iMBiG4QF1rQiIRxQP48z//5HLmllp0boPWYmJva+vxjfpndGRiunHBwAAAAAAAAAAAAAAAAAAAABIyvmwB/Py1et6tuHCZPHTZWYxfPXKnmu5MlEfjFktX722ZyqLXjJdFO/06lvn/YXK169e3RMN4v5CxYNXr+6JCCUilIhQIkKJCCUilIhQov8LZfI4i/NafXH354Ixdy6HCPW3UjLe7obVvLauhsvB12xb2KUIdckUx/tpeUibUWmajo72FRGhavl4drqdls7scYSqG3xO7k0jVLvT/v4OCqFc+flwfxqh3E6fvh05QtlMtPFNI5Qt23mnEcr2YCucUOLyCdUwhfcdilC2fD96MI5QzepnNzMO5WnzY8u13nX1VWtCWp2LVfLD+ZYw8FCti7z0K8s9X8oHHqq1aVBl3nsXAg/lfoo6HP0DAg/l/tMrF/6bYYIOZdqhCkJJoX6NCUUoG6FEhBIRSkQoEaFEhBJJoUzSWLmhTpn1WJKFHcpE00kjdZ5/mNgqZ1p4ocbpvwddbJKwQ0VqqDmhNEvnTYpQXuewt4L1UN9h35qoh3J/qkUon9GYvyjJKSKUZGIIJancX0kSymfnDiOUzzH0UOK1XnoO/qU3nzZauwfWI2v382Z4oepS5iprbdxF+fWhqLWHF14ou9lNKHY474diK5hQDxFKRCgRoUSEEhFKRCgRoUSEEhFKRCgRoUSEEhFKRCgRoUSEEhFKRCgRoUSEEhFKRCgRoUSEEhFKRCgRoURdD6foEuqtDqfoetxJl1BvddxJ1wN05FDvdoBO1yOZsqQVKr//5Pc7kqnrIV9L9x7OUTiHfAEAAAAAAAAAAAAAAAAAAADoy293bTjHT+GnxAAAAABJRU5ErkJggg==" width = "50"></a><br>
+          <a href = "https://gmail.com/share?url=https://www.muflihaabd@gmail.com"><image src = "data:image/jpeg;base64,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" width = "50"></a><br>
+          <a href = "https://plus.google.com/share?url=muflihaabd@gmail.com"><image src ="data:image/png;base64,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" width = "50"></a><br>
+          <a href = "https://linkedin.com/share?url=https://ng.linkedin.com/in/muflihat-abdulmajid-a7b042b9"><image src = "data:image/png;base64,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" width = "50"></a>
 
-        <table>
-            <thead>
+        <table id="rcorners">
+        <thead>
                 <tr>
                     <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS3C4qBf-lK0MSmx5Gwd0uTOO4NQj8--JQZGQ&usqp=CAU"></td>
-                    <td><h1><strong>Muflihat<strong> Abdulmajid</h1></td>
+                    <td><h1>Muflihat Abdulmajid</h1></td>
                     <td>+2347039207510<br>
-                        muflihaabd@gmail.com<br>
-                        Muflih14.github.io</d>
+                        <class ="head">muflihaabd@gmail.com<br>
+                        <class ="head"> Muflih14.github.io</td>
                 </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>Intro<strong></td>
-                <td>I am a computer programmer, with vast experience in administrative and field work</td>
-                </td> </td>
-                  </tr>
+                <td class="head"><button type="button"
+                  class = "collapsible"><strong>Intro<strong></button></td>
+                 <div class = "content"><td>  I am a computer programmer, with vast experience in administrative and field work<br>
+                  I am also a data collector who lives travelling and seeing new places, enjoy interacting<br>
+                  with people and love learning new things<br>
+                </td></div>
+                </tr>
+
               <tr>
-                <td></td>
-                <td>I am also a data collector who loves travelling and seeing new places, enjoy interacting<br>
-                    with people and love learning new things<br>
-                    <br>
-                  </td>
-                <td></td>
+                <td class="head"><button type="button"
+                  class = "collapsible"><strong>Interests</strong></button></td>
+                <div class = "content"><td>Design, travelling and reading</td>
+                <br></div>
               </tr>
 
               <tr>
-                <td><strong>Interests</strong></td>
-                <td>Design, travelling and reading</td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td></td>
-                <td><br>
-                </td>
-              </tr>
-
-              <tr>
-       "          <td><strong>Skills</strong></td>
-                <td><img src="https://i.stack.imgur.com/PgcSR.png" width ="100">html
+                 <td class="head"><button type="button"
+                   class = "collapsible"><strong>Skills</strong></button></td>
+                <div class = "content"><td><img src="https://i.stack.imgur.com/PgcSR.png" width ="100">html
                     <img src ="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS8TUvkaAZ51SEo89de6huZMjCxCEQsKhgpFg&usqp=CAUhttps://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS8TUvkaAZ51SEo89de6huZMjCxCEQsKhgpFg&usqp=CAU" width = "75"> CSS
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTXkN9h58RWKSRwPXSDyJfGJxgVvQAUnSZkwQ&usqp=CAU" width = "110">JSS</td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td></td>
-                <td><br>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTXkN9h58RWKSRwPXSDyJfGJxgVvQAUnSZkwQ&usqp=CAU" width = "110">JSS <br>
+                  <br>
                 </td>
-              </tr>
+                <br> </div>
+                </tr>
 
               <tr>
-                <td><strong>Education</strong></td>
-                <td><strong>B.Sc. Applied Zoology</strong></td>
+                <td class="head"><button type="button"
+                  class = "collapsible"><strong>Education</strong></button></td>
+                <div class = "content"><td><strong>B.Sc. Applied Zoology</strong><br>
+                  Bayero University, Kano<br>
+                  Kano, Nigeria<br>
+                  <br>
+                </td>
                 <td>2008 - 2014
               </tr>
-
               <tr>
-                <td></td>
-                <td>Bayero University, Kano<br>
-                  Kano, Nigeria<br>
-                <br></td>
-                <td></td>
-
-                <tr>
                   <td></td>
                   <td><strong>Professional Post Graduate Diploma in Customer Relationship Management</strong><br>
+                    Instiute of Customer Relationship Management<br>
+                    Nigeria<br>
+                    <br>
                   <td>2008 - 2013</td>
-                </tr>
-
-                <tr>
-                  <td></td>
-                  <td>Instiute of Customer Relationship Management<br>
-                  Nigeria<br>
-                  <br></td>
-                  <td></td>
-                </tr>
+                </div></tr>
 
               <tr>
-                  <td><strong>Experience</strong></td>
-                  <td><strong>Emergency Call Agent<strong></td>
-                  <td>2015-2017</td>
-                  </tr>
-
-                  <tr>
-                    <td></td>
-                    <td>Kano State Emergency Call Center<br>
+                  <td class="head"><button type="button"
+                    class = "collapsible"><strong>Experience</strong></button></td>
+                  <td><div class = "content"><strong>Emergency Call Agent</strong><br>
+                    Kano State Emergency Call Center<br>
                       Kano, Kano State<br>
                       <ul>
                         <li>Attending to calls from people in life-threathening situations</li>
                         <li>Contacting relevant response team and dispatching help to victim within the shortest possible time</li>
                         <li>Keeping record of every emergency dispatch</li>
                       </ul><br>
-                    </td>
+                  </td>
+                  <td>2015-2017</td>
+                  </tr>
 
                   <tr>
                     <td></td>
-                    <td><strong>Data Collector<strong></td>
+                    <td><strong>Data Collector</strong><br>
+                      Management Sciences for Health<br>
+                      <ul>
+                        <li> Collecting Data relevant for Health interventions from appropriate source</li>
+                        <li> Collating data collected and forwarding same to the Organization's website</li>
+                      </ul><br>
+                    </td>
                     <td> 2018 till date<br>
-                    </td>
+                    </td></div>
                   </tr>
 
                   <tr>
-                    <td></td>
-                    <td>Management Sciences for Health<br>
-                    <ul>
-                      <li> Collecting Data relevant for Health interventions from appropriate source</li>
-                      <li> Collating data collected and forwarding same to the Organization's website</li>
-                    </ul>
-
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td><strong>Projects<strong></td>
-                    <td><a href ="https://github.com/Muflih14/eHealthAcademyAssignments">github.com/eha-academy projects</td>
-
+                    <td class="head"><button type="button"
+                      class = "collapsible"><strong>Projects<strong></button></td>
+                    <td><div class = "content">"<a href ="https://github.com/Muflih14/eHealthAcademyAssignments">github.com/eha-academy projects</div></td>
+\
           </table>
+
+
+          <a href=//www.instagram.com/p/B3B-4Lel5jM/?igshid=13ivniw03jyny>instagram</a>
 
           <button onclick = "topFunction()"
           id = "myBtn"
@@ -180,7 +209,21 @@
               document.documentElement.scrollTop = 0;
             }
 
-        </script>
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+              coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                  content.style.display = "none";
+                } else {
+                  content.style.display = "block";
+                }
+              });
+            }
+         </script>
 
   </body>
 </html>
